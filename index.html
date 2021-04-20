@@ -21,14 +21,14 @@
 
     <main class="main">
       <div class="main-overview">
-        <div class="small-card">
+        <!-- <div class="small-card">
           <div>Height</div>
           <div class="ob-value" id="height">undefined</div>
         </div>
         <div class="small-card">
           <div>Weight</div>
           <div class="ob-value" id="weight">undefined</div>
-        </div>
+        </div> -->
         <div class="small-card">
           <div>Systolic Blood Pressure</div>
           <div class="ob-value" id="sys">undefined</div>
@@ -50,22 +50,15 @@
       <div class="big-card">
         <div class="card">
           <div class="title">
-            Add an Annotation for the Weight Observation
+            Risk Percentage
           </div>
-        <span>  <input class="annotation-box" id="annotation">
-          <button class="annotation-button" id="add">Add</button></span>
-          <div class="annotations">
-          Latest Annotation
-          <li id="note">No annotations</li>
-          </div>
+          <!-- <ul id="med_list"></ul> -->
+          <div class= "ob-value" id="risk"></div>
         </div>
-
-        <div class="card">
-          <div class="title">
-            Medication Requests
-          </div>
-          <ul id="med_list"></ul>
-        </div>
+      </div>
+      <div style="position:relative; height: 40vh; width:80vw"> 
+        <canvas id="menChart" width="100px" height="100px"></canvas>
+        <canvas id="womenChart" width="100px" height="100px"></canvas>
       </div>
 
     </main>
@@ -75,7 +68,87 @@
   <script src="./lib/js/get-data.js"></script>
 
   <!-- uncomment below script and comment above script to switch for easy local testing -->
-  <!-- <script src="./lib/js/get-data-test.js"></script> -->
+  <!-- <script src="./lib/js/get-data-test.js"></script>  -->
+  <script src="./node_modules/chart.js/dist/chart.js"></script>
+  <script>
+    var ctxmen = document.getElementById('menChart');
+    var ctxwomen = document.getElementById('womenChart');
+    men = [3,5,7,11,14,16,21,25,30]
+    women = [1,1,2,5,8,12,12,13,14]
+    var menChart = new Chart(ctxmen, {
+        type: 'bar',
+        data: {
+            labels: ['30-34 Years', '35-39 Years', '40-44 Years', '45-49 Years', '50-54 Years', '55-59 Years', '60-64 Years','65-69 Years','70-74 Years'],
+            datasets: [{
+                label: 'Men Comparative Risk Percentage',
+                data: men,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(255, 99, 132, 1)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(255, 99, 132, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+    var womenChart = new Chart(ctxwomen, {
+        type: 'bar',
+        data: {
+            labels: ['30-34 Years', '35-39 Years', '40-44 Years', '45-49 Years', '50-54 Years', '55-59 Years', '60-64 Years','65-69 Years','70-74 Years'],
+            datasets: [{
+                label: 'Women Comparative Risk Percentage',
+                data: women,
+                backgroundColor: [
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(75, 192, 192, 1)'
+                ],
+                borderColor: [
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(75, 192, 192, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+  </script>
+  
 </body>
 
 </html>

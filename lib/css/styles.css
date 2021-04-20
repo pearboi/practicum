@@ -32,7 +32,7 @@ body {
 
 .main {
   grid-area: main;
-  background-color: #2b4865;
+  /* background-color: #2b4865; */
 }
 
 .main-header {
@@ -42,7 +42,7 @@ body {
   padding: 20px;
   height: 150px;
   background-color: #e3e4e6;
-  color: slategray;
+  color: whitesmoke;
 }
 
 .main-overview {
